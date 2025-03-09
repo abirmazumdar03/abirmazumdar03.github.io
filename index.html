@@ -1,232 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abir Mazumdar | Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-ML Prodigy | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="carousel-background">
-        <!-- Background carousel images will be loaded via JS -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="#home">AI-ML Prodigy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <header>
-        <div class="logo">Hello World ❤</div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+  <!-- Background slider -->
+  <div class="background-slider">
+    <div class="background-slide active"></div>
+    <div class="background-slide"></div>
+    <div class="background-slide"></div>
+  </div>
+
+  <!-- Header -->
+  <header id="home" class="hero-section">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-lg-8 mx-auto text-center">
+          <div class="intro-text">
+            <h1 class="name">Hello, I'm <span class="highlight">Alex</span></h1>
+            <div class="typing-container">
+              <span id="typing-text"></span><span class="cursor">|</span>
+            </div>
+            <div class="mt-4">
+              <a href="#about" class="btn btn-primary btn-xl rounded-pill">Discover More</a>
+            </div>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <section id="home" class="section">
-            <div class="profile-container">
-                <div class="profile-image">
-                    <!-- Placeholder for profile image -->
-                    <div class="profile-placeholder">
-                        <span>AM</span>
-                    </div>
-                </div>
-                <div class="profile-content">
-                    <h1>Abir Mazumdar</h1>
-                    <h2 class="typewriter">AI & Machine Learning Explorer</h2>
-                    <p>Turning data into meaningful insights and building intelligent solutions for tomorrow's challenges.</p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn primary">View Projects</a>
-                        <a href="#contact" class="btn secondary">Get In Touch</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section">
-            <h2>About Me</h2>
-            <div class="about-container">
-                <div class="about-text">
-                    <p>Myself Abir Mazumdar, a passionate technologist with a strong foundation in Artificial Intelligence and Machine Learning. I completed my B.Tech in Computer Science from XYZ University and my M.Tech specializing in AI from ABC University.</p>
-                    <p>My journey in the world of AI began during my undergraduate studies when I developed a keen interest in how machines can learn and adapt. Since then, I've been dedicated to exploring the cutting-edge developments in this field and applying them to solve real-world problems.</p>
-                    <p>When I'm not coding or exploring datasets, you can find me hiking in the mountains or reading about the latest advancements in technology. I believe in continuous learning and am always seeking opportunities to expand my knowledge and skills.</p>
-                </div>
-                <div class="skills-container">
-                    <h3>Technical Skills</h3>
-                    <div class="skills">
-                        <div class="skill">
-                            <span>Machine Learning</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span>Deep Learning</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span>Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span>Data Analysis</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 88%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span>NLP</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill">
-                            <span>TensorFlow/PyTorch</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 82%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="section">
-            <h2>Projects</h2>
-            <div class="projects-container">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Predictive Analytics for Healthcare</h3>
-                        <p>Developed a machine learning model that predicts patient readmission risks using historical medical data. The model achieves 89% accuracy and has been implemented in a web application for healthcare providers.</p>
-                        <div class="project-technologies">
-                            <span>Python</span>
-                            <span>TensorFlow</span>
-                            <span>Scikit-learn</span>
-                            <span>Flask</span>
-                        </div>
-                        <a href="https://github.com/username/healthcare-analytics" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> View Project
-                        </a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Natural Language Understanding System</h3>
-                        <p>Built a sophisticated NLP system capable of understanding context and sentiment in customer feedback. Implemented transformer-based models to improve accuracy by 35% over baseline methods.</p>
-                        <div class="project-technologies">
-                            <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>BERT</span>
-                            <span>Hugging Face</span>
-                        </div>
-                        <a href="https://scholar.google.com/example" target="_blank" class="project-link">
-                            <i class="fas fa-graduation-cap"></i> Research Paper
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience" class="section">
-            <h2>Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>AI Research Intern</h3>
-                        <h4>TechInnovate Labs</h4>
-                        <p class="timeline-date">June 2023 - December 2023</p>
-                        <p>Conducted research on reinforcement learning algorithms for autonomous systems. Implemented and evaluated several state-of-the-art approaches, resulting in a 20% improvement in agent performance. Collaborated with a team of researchers to publish findings at a leading AI conference.</p>
-                        <ul class="responsibilities">
-                            <li>Developed deep reinforcement learning models using PyTorch</li>
-                            <li>Optimized training procedures to reduce computation time by 30%</li>
-                            <li>Created visualization tools for model performance analysis</li>
-                            <li>Presented weekly progress updates to the research team</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Data Science Fellow</h3>
-                        <h4>DataSense Foundation</h4>
-                        <p class="timeline-date">January 2023 - May 2023</p>
-                        <p>Participated in a competitive fellowship program focused on applying machine learning to solve social challenges. Worked on a project to predict areas at high risk for food insecurity using various socioeconomic indicators and satellite imagery.</p>
-                        <ul class="responsibilities">
-                            <li>Collected and preprocessed diverse datasets from multiple sources</li>
-                            <li>Built and fine-tuned machine learning models for geospatial prediction</li>
-                            <li>Designed an interactive dashboard for policymakers using Plotly and Dash</li>
-                            <li>Presented findings to NGO stakeholders and government officials</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <h2>Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-text">
-                    <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision. Feel free to reach out to me through any of the platforms below.</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://github.com/username" target="_blank" class="social-link github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/username" target="_blank" class="social-link linkedin">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://facebook.com/username" target="_blank" class="social-link facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Abir Mazumdar. All Rights Reserved.</p>
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">About Me</h2>
+          <hr class="divider">
         </div>
-    </footer>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-4">
+          <div class="profile-img">
+            <div class="hexagon">
+              <div class="hexagon-inner">
+                <div class="hexagon-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="about-content">
+            <p class="lead">I am an AI-ML prodigy who's in a voyage to explore the various wings of AI-ML.</p>
+            <p>With a passion for artificial intelligence and machine learning, I develop innovative solutions that push the boundaries of what's possible. My journey in the field of AI has allowed me to work on diverse projects ranging from computer vision to natural language processing.</p>
+            <p>I believe in the power of AI to transform industries and improve lives. My goal is to continue exploring emerging technologies and contribute to the advancement of this exciting field.</p>
+            <div class="stats-container">
+              <div class="stat-item">
+                <span class="stat-number" data-count="15">0</span>
+                <span class="stat-text">Projects</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="5">0</span>
+                <span class="stat-text">Publications</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="3">0</span>
+                <span class="stat-text">Years Experience</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">My Skills</h2>
+          <hr class="divider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Machine Learning</h3>
+            <p>Expert in supervised and unsupervised learning algorithms, neural networks, and deep learning frameworks.</p>
+            <div class="skill-progress">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span>95%</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3>Artificial Intelligence</h3>
+            <p>Skilled in developing intelligent systems, knowledge representation, and reasoning algorithms.</p>
+            <div class="skill-progress">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span>90%</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Data Science</h3>
+            <p>Proficient in data analysis, visualization, and extracting meaningful insights from complex datasets.</p>
+            <div class="skill-progress">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span>85%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Programming</h3>
+            <p>Expert in Python, TensorFlow, PyTorch, and other programming languages and frameworks for AI development.</p>
+            <div class="skill-progress">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span>92%</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-language"></i>
+            </div>
+            <h3>NLP</h3>
+            <p>Experienced in natural language processing, sentiment analysis, and building conversational AI systems.</p>
+            <div class="skill-progress">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span>88%</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Computer Vision</h3>
+            <p>Skilled in image recognition, object detection, and developing vision-based AI solutions.</p>
+            <div class="skill-progress">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <span>80%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">My Projects</h2>
+          <hr class="divider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-card">
+            <div class="project-img">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Neural Style Transfer</h3>
+              <p>A deep learning project that applies the style of one image to the content of another.</p>
+              <div class="tech-stack">
+                <span>TensorFlow</span>
+                <span>CNN</span>
+                <span>Computer Vision</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-card">
+            <div class="project-img project-img-2">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Sentiment Analysis API</h3>
+              <p>An API that analyzes sentiment in text using advanced NLP techniques.</p>
+              <div class="tech-stack">
+                <span>BERT</span>
+                <span>Flask</span>
+                <span>NLP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-card">
+            <div class="project-img project-img-3">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Predictive Analytics Tool</h3>
+              <p>A machine learning solution for business forecasting and decision making.</p>
+              <div class="tech-stack">
+                <span>Scikit-learn</span>
+                <span>Time Series</span>
+                <span>Dashboard</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-card">
+            <div class="project-img project-img-4">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Object Detection System</h3>
+              <p>Real-time object detection system using advanced computer vision algorithms.</p>
+              <div class="tech-stack">
+                <span>YOLO</span>
+                <span>OpenCV</span>
+                <span>Python</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-card">
+            <div class="project-img project-img-5">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Recommender System</h3>
+              <p>A collaborative filtering system for personalized recommendations.</p>
+              <div class="tech-stack">
+                <span>Matrix Factorization</span>
+                <span>PySpark</span>
+                <span>API</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="project-card">
+            <div class="project-img project-img-6">
+              <div class="overlay">
+                <div class="overlay-content">
+                  <a href="#" class="btn btn-primary">View Project</a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Chatbot Framework</h3>
+              <p>An intelligent conversational AI system with natural language understanding.</p>
+              <div class="tech-stack">
+                <span>Transformer</span>
+                <span>Rasa</span>
+                <span>NLU</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Get In Touch</h2>
+          <hr class="divider">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-xl">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <h3>Email</h3>
+              <p>contact@aimlprodigy.com</p>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <h3>Location</h3>
+              <p>San Francisco, CA</p>
+            </div>
+            <div class="social-links">
+              <a href="https://github.com/" target="_blank" class="social-icon">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://linkedin.com/" target="_blank" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://facebook.com/" target="_blank" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <p>&copy; 2025 AI-ML Prodigy. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
