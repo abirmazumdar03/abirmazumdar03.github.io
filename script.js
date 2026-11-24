@@ -15,27 +15,27 @@ const portfolio = {
   ],
   projects: [
     {
-      number: '01', category: 'MACHINE LEARNING', title: 'Predictive maintenance for industrial machines',
+      category: 'Machine learning', title: 'Predictive maintenance for industrial machines',
       description: 'Explored the UCI AI4I 2020 dataset, engineered features, and compared classifiers while guarding against data leakage. A decision tree reached 92% recall for failures on the held out test set.',
       stack: ['Python', 'scikit-learn', 'Pandas'], url: 'https://github.com/abirmazumdar03/machine-failure-risk-prediction'
     },
     {
-      number: '02', category: 'SYSTEMS · C', title: 'Rate monotonic task scheduler',
+      category: 'Systems · C', title: 'Rate monotonic task scheduler',
       description: 'A deterministic, tick based single core scheduler simulator with fixed task priorities, a Liu & Layland schedulability check, and text based execution traces for inspecting deadline misses.',
       stack: ['C', 'Makefile', 'Scheduling'], url: 'https://github.com/abirmazumdar03/Rate-Monotonic-Task-Scheduler-Simulation'
     },
     {
-      number: '03', category: 'SECURITY · IOT', title: 'End to end encrypted health data pipeline',
+      category: 'Security · IoT', title: 'End to end encrypted health data pipeline',
       description: 'A Raspberry Pi telemetry flow and blind Flask backend. The design uses ECDH, HKDF and AES-GCM so the backend can validate and store encrypted payloads without reading their contents.',
       stack: ['Raspberry Pi', 'Flask', 'AWS KMS', 'MongoDB'], url: 'https://github.com/abirmazumdar03/Secure-E2EE-Health-Data-Pipeline'
     },
     {
-      number: '04', category: 'COMPUTER VISION · EDGE AI', title: 'Lightweight retinal OCT screening',
+      category: 'Computer vision · Edge AI', title: 'Lightweight retinal OCT screening',
       description: 'An offline oriented screening pipeline for low resource settings. The project explores distillation, ONNX export, INT8 quantization and calibration, with an explainability and review workflow.',
       stack: ['EfficientNet-Lite0', 'ONNX', 'INT8', 'Grad-CAM'], url: 'https://github.com/abirmazumdar03/oct-screening'
     },
     {
-      number: '05', category: 'LLMS · AGENTIC RAG', title: 'Documentation intelligence',
+      category: 'Language models · Search', title: 'Documentation intelligence',
       description: 'A question answering app that crawls technical documentation, indexes local embeddings in Pinecone and uses an agent to retrieve relevant passages. Answers include source links; chat history persists in SQLite.',
       stack: ['LangChain', 'Pinecone', 'Hugging Face', 'Streamlit'], url: 'https://github.com/abirmazumdar03/Documentation-Intelligence'
     }
@@ -55,13 +55,13 @@ const portfolio = {
 const nav = document.querySelector('#navLinks');
 nav.innerHTML = portfolio.navigation.map(item => `<a href="${item.href}">${item.label}</a>`).join('');
 
-document.querySelector('#skillGroups').innerHTML = portfolio.skills.map((group, index) => `
-  <article class="skill-group reveal"><span class="skill-index">0${index + 1}</span><div><h3>${group.title}</h3><div class="skill-tags">${group.items.map(item => `<span>${item}</span>`).join('')}</div></div>
+document.querySelector('#skillGroups').innerHTML = portfolio.skills.map(group => `
+  <article class="skill-group reveal"><div><h3>${group.title}</h3><div class="skill-tags">${group.items.map(item => `<span>${item}</span>`).join('')}</div></div>
   </article>`).join('');
 
 document.querySelector('#projectGrid').innerHTML = portfolio.projects.map(project => `
   <article class="project-card reveal">
-    <div class="project-topline"><span>${project.category}</span><span>${project.number}</span></div>
+    <div class="project-topline"><span>${project.category}</span></div>
     <h3>${project.title}</h3><p>${project.description}</p>
     <div class="project-bottom"><div class="tech-stack">${project.stack.map(tech => `<span>${tech}</span>`).join('')}</div>
       <a class="project-link" href="${project.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} on GitHub"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
@@ -72,6 +72,12 @@ document.querySelector('#educationList').innerHTML = portfolio.education.map(ite
 
 document.querySelector('#socialLinks').innerHTML = portfolio.socials.map(item => `
   <a class="social-link" href="${item.url}" target="_blank" rel="noopener noreferrer"><span class="social-icon"><i class="${item.icon}"></i></span><span>${item.label}</span><i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></a>`).join('');
+
+const portraitCard = document.querySelector('.portrait-card');
+const portraitImage = document.querySelector('.portrait-image');
+portraitImage.addEventListener('load', () => portraitCard.classList.add('has-image'));
+portraitImage.addEventListener('error', () => portraitCard.classList.add('no-image'));
+if (portraitImage.complete && portraitImage.naturalWidth > 0) portraitCard.classList.add('has-image');
 
 const toggle = document.querySelector('.nav-toggle');
 toggle.addEventListener('click', () => {
