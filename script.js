@@ -1,198 +1,110 @@
-// Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Typing effect variables
-    const typingText = document.getElementById('typing-text');
-    const phrases = [
-      'Machine Learning Engineer',
-      'AI Researcher',
-      'Deep Learning Enthusiast',
-      'Data Scientist',
-      'Neural Network Architect'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-    
-    // Stats counter variables
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let statsAnimated = false;
-    
-    // Nav shrink on scroll
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 100) {
-        document.getElementById('mainNav').classList.add('navbar-shrink');
-      } else {
-        document.getElementById('mainNav').classList.remove('navbar-shrink');
-      }
-      
-      // Animate stats when in viewport
-      if (!statsAnimated && isInViewport(document.querySelector('.stats-container'))) {
-        animateStats();
-        statsAnimated = true;
-      }
-      
-      // Animate progress bars when in viewport
-      document.querySelectorAll('.progress-bar').forEach(bar => {
-        if (isInViewport(bar) && !bar.classList.contains('animated')) {
-          setTimeout(() => {
-            bar.style.width = bar.getAttribute('aria-valuenow') + '%';
-            bar.classList.add('animated');
-          }, 200);
-        }
-      });
-      
-      // Add animation to sections when they come into viewport
-      document.querySelectorAll('section').forEach(section => {
-        if (isInViewport(section) && !section.classList.contains('animated')) {
-          section.classList.add('fade-in');
-          section.classList.add('animated');
-        }
-      });
-    });
-    
-    // Background slider
-    const slides = document.querySelectorAll('.background-slide');
-    let currentSlide = 0;
-    
-    function changeSlide() {
-      slides.forEach(slide => slide.classList.remove('active'));
-      currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add('active');
+/* Portfolio content lives here: add or edit entries without changing the layout. */
+const portfolio = {
+  navigation: [
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Education', href: '#education' },
+    { label: 'Connect', href: '#connect' }
+  ],
+  skills: [
+    { title: 'Languages', items: ['Python', 'C', 'C++', 'Java'] },
+    { title: 'AI & information retrieval', items: ['Machine learning', 'LangChain', 'LangSmith', 'Hugging Face', 'Pinecone', 'Retrieval augmented generation'] },
+    { title: 'Data & development', items: ['Flask', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'scikit-learn'] },
+    { title: 'Databases & workflow', items: ['MySQL', 'MongoDB', 'Git', 'GitHub', 'AWS'] }
+  ],
+  projects: [
+    {
+      number: '01', category: 'MACHINE LEARNING', title: 'Predictive maintenance for industrial machines',
+      description: 'Explored the UCI AI4I 2020 dataset, engineered features, and compared classifiers while guarding against data leakage. A decision tree reached 92% recall for failures on the held out test set.',
+      stack: ['Python', 'scikit-learn', 'Pandas'], url: 'https://github.com/abirmazumdar03/machine-failure-risk-prediction'
+    },
+    {
+      number: '02', category: 'SYSTEMS · C', title: 'Rate monotonic task scheduler',
+      description: 'A deterministic, tick based single core scheduler simulator with fixed task priorities, a Liu & Layland schedulability check, and text based execution traces for inspecting deadline misses.',
+      stack: ['C', 'Makefile', 'Scheduling'], url: 'https://github.com/abirmazumdar03/Rate-Monotonic-Task-Scheduler-Simulation'
+    },
+    {
+      number: '03', category: 'SECURITY · IOT', title: 'End to end encrypted health data pipeline',
+      description: 'A Raspberry Pi telemetry flow and blind Flask backend. The design uses ECDH, HKDF and AES-GCM so the backend can validate and store encrypted payloads without reading their contents.',
+      stack: ['Raspberry Pi', 'Flask', 'AWS KMS', 'MongoDB'], url: 'https://github.com/abirmazumdar03/Secure-E2EE-Health-Data-Pipeline'
+    },
+    {
+      number: '04', category: 'COMPUTER VISION · EDGE AI', title: 'Lightweight retinal OCT screening',
+      description: 'An offline oriented screening pipeline for low resource settings. The project explores distillation, ONNX export, INT8 quantization and calibration, with an explainability and review workflow.',
+      stack: ['EfficientNet-Lite0', 'ONNX', 'INT8', 'Grad-CAM'], url: 'https://github.com/abirmazumdar03/oct-screening'
+    },
+    {
+      number: '05', category: 'LLMS · AGENTIC RAG', title: 'Documentation intelligence',
+      description: 'A question answering app that crawls technical documentation, indexes local embeddings in Pinecone and uses an agent to retrieve relevant passages. Answers include source links; chat history persists in SQLite.',
+      stack: ['LangChain', 'Pinecone', 'Hugging Face', 'Streamlit'], url: 'https://github.com/abirmazumdar03/Documentation-Intelligence'
     }
-    
-    // Set active nav item based on scroll position
-    window.addEventListener('scroll', function() {
-      const sections = document.querySelectorAll("section");
-      const navItems = document.querySelectorAll(".nav-link");
-      
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute("id");
-        }
-      });
-      
-      navItems.forEach(item => {
-        item.classList.remove("active");
-        if (item.getAttribute("href") === `#${current}`) {
-          item.classList.add("active");
-        }
-      });
-    });
-    
-    // Typing effect function
-    function type() {
-      const currentPhrase = phrases[phraseIndex];
-      
-      if (isDeleting) {
-        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
-      } else {
-        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100;
-      }
-      
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        isDeleting = true;
-        typingSpeed = 1500; // Pause at end of phrase
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typingSpeed = 500; // Pause before new phrase
-      }
-      
-      setTimeout(type, typingSpeed);
-    }
-    
-    // Animate stats function
-    function animateStats() {
-      statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-count'));
-        let count = 0;
-        const increment = Math.ceil(target / 50);
-        const duration = 2000; // 2 seconds
-        const interval = duration / (target / increment);
-        
-        const counter = setInterval(() => {
-          count += increment;
-          if (count >= target) {
-            stat.textContent = target;
-            clearInterval(counter);
-          } else {
-            stat.textContent = count;
-          }
-        }, interval);
-      });
-    }
-    
-    // Check if element is in viewport
-    function isInViewport(element) {
-      const rect = element.getBoundingClientRect();
-      return (
-        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.bottom >= 0
-      );
-    }
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a.nav-link').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        window.scrollTo({
-          top: targetElement.offsetTop - 70,
-          behavior: 'smooth'
-        });
-      });
-    });
-    
-    // Initialize functions
-    type(); // Start typing effect
-    setInterval(changeSlide, 5000); // Change background every 5 seconds
-    
-    // Add hover effects for project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('mouseenter', function() {
-        this.querySelector('.overlay').style.opacity = '1';
-      });
-      
-      card.addEventListener('mouseleave', function() {
-        this.querySelector('.overlay').style.opacity = '0';
-      });
-    });
-    
-    // Form validation
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Simple form validation
-        let valid = true;
-        const inputs = this.querySelectorAll('input, textarea');
-        
-        inputs.forEach(input => {
-          if (input.hasAttribute('required') && !input.value.trim()) {
-            valid = false;
-            input.classList.add('is-invalid');
-          } else {
-            input.classList.remove('is-invalid');
-          }
-        });
-        
-        if (valid) {
-          // Form submission - in a real application, you would handle this with AJAX
-          alert('Thank you for your message! I will get back to you soon.');
-          this.reset();
-        }
-      });
+  ],
+  education: [
+    { degree: 'M.Tech · Computer Science and Engineering', school: 'National Institute of Technology Rourkela', place: 'Rourkela, Odisha', dates: '2025 — Present', detail: 'CGPA 7.78' },
+    { degree: 'B.Tech · Computer Science and Engineering', school: 'Arka Jain University', place: 'Jamshedpur, Jharkhand', dates: '2020 — 2024', detail: 'CGPA 9.10' },
+    { degree: 'ISC · Science (PCM)', school: 'DBMS English School', place: 'Jamshedpur, Jharkhand', dates: 'Completed 2020', detail: '89.6%' }
+  ],
+  socials: [
+    { label: 'GitHub', icon: 'fa-brands fa-github', url: 'https://github.com/abirmazumdar03' },
+    { label: 'LinkedIn', icon: 'fa-brands fa-linkedin-in', url: 'https://www.linkedin.com/in/abir-mazumdar24/' },
+    { label: 'Facebook', icon: 'fa-brands fa-facebook-f', url: 'https://www.facebook.com/profile.php?id=100009567234483' }
+  ]
+};
+
+const nav = document.querySelector('#navLinks');
+nav.innerHTML = portfolio.navigation.map(item => `<a href="${item.href}">${item.label}</a>`).join('');
+
+document.querySelector('#skillGroups').innerHTML = portfolio.skills.map((group, index) => `
+  <article class="skill-group reveal"><span class="skill-index">0${index + 1}</span><div><h3>${group.title}</h3><div class="skill-tags">${group.items.map(item => `<span>${item}</span>`).join('')}</div></div>
+  </article>`).join('');
+
+document.querySelector('#projectGrid').innerHTML = portfolio.projects.map(project => `
+  <article class="project-card reveal">
+    <div class="project-topline"><span>${project.category}</span><span>${project.number}</span></div>
+    <h3>${project.title}</h3><p>${project.description}</p>
+    <div class="project-bottom"><div class="tech-stack">${project.stack.map(tech => `<span>${tech}</span>`).join('')}</div>
+      <a class="project-link" href="${project.url}" target="_blank" rel="noopener noreferrer" aria-label="View ${project.title} on GitHub"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></div>
+  </article>`).join('');
+
+document.querySelector('#educationList').innerHTML = portfolio.education.map(item => `
+  <article class="education-item reveal"><div class="education-date">${item.dates}</div><div><h3>${item.degree}</h3><p>${item.school} <span>· ${item.place}</span></p></div><span class="education-detail">${item.detail}</span></article>`).join('');
+
+document.querySelector('#socialLinks').innerHTML = portfolio.socials.map(item => `
+  <a class="social-link" href="${item.url}" target="_blank" rel="noopener noreferrer"><span class="social-icon"><i class="${item.icon}"></i></span><span>${item.label}</span><i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></a>`).join('');
+
+const toggle = document.querySelector('.nav-toggle');
+toggle.addEventListener('click', () => {
+  const expanded = toggle.getAttribute('aria-expanded') === 'true';
+  toggle.setAttribute('aria-expanded', String(!expanded));
+  nav.classList.toggle('is-open', !expanded);
+  toggle.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+  toggle.innerHTML = `<i class="fa-solid fa-${expanded ? 'bars' : 'xmark'}"></i>`;
+});
+nav.addEventListener('click', event => {
+  if (event.target.closest('a')) {
+    nav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
     }
   });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+
+const sections = document.querySelectorAll('main section[id], main header[id]');
+const navObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    nav.querySelectorAll('a').forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+  });
+}, { rootMargin: '-35% 0px -55% 0px' });
+sections.forEach(section => navObserver.observe(section));
